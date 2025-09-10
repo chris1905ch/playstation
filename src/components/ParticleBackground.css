@@ -1,0 +1,273 @@
+/* Fondo de partículas futurista */
+.particle-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 50%, #16213e 100%);
+}
+
+/* Contenedor de partículas pequeñas */
+.particles-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.particle {
+  position: absolute;
+  width: var(--size);
+  height: var(--size);
+  background: var(--color);
+  border-radius: 50%;
+  left: var(--left);
+  opacity: var(--opacity);
+  animation: float-up var(--duration) var(--delay) infinite linear;
+  box-shadow: 0 0 10px currentColor;
+}
+
+@keyframes float-up {
+  from {
+    transform: translateY(100vh) scale(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: var(--opacity);
+  }
+  90% {
+    opacity: var(--opacity);
+  }
+  to {
+    transform: translateY(-100px) scale(1);
+    opacity: 0;
+  }
+}
+
+/* Círculos flotantes grandes */
+.floating-circles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.1), transparent);
+  filter: blur(1px);
+  animation: float-circle 20s infinite ease-in-out;
+}
+
+.circle-1 {
+  width: 300px;
+  height: 300px;
+  top: 10%;
+  left: -10%;
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.08), transparent);
+  animation-delay: 0s;
+  animation-duration: 25s;
+}
+
+.circle-2 {
+  width: 200px;
+  height: 200px;
+  top: 60%;
+  right: -5%;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.08), transparent);
+  animation-delay: 5s;
+  animation-duration: 30s;
+}
+
+.circle-3 {
+  width: 150px;
+  height: 150px;
+  top: 30%;
+  right: 20%;
+  background: radial-gradient(circle, rgba(255, 0, 110, 0.06), transparent);
+  animation-delay: 10s;
+  animation-duration: 35s;
+}
+
+.circle-4 {
+  width: 250px;
+  height: 250px;
+  bottom: 10%;
+  left: 20%;
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.05), transparent);
+  animation-delay: 15s;
+  animation-duration: 40s;
+}
+
+@keyframes float-circle {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px) scale(1);
+  }
+  25% {
+    transform: translateY(-20px) translateX(10px) scale(1.1);
+  }
+  50% {
+    transform: translateY(-40px) translateX(-10px) scale(0.9);
+  }
+  75% {
+    transform: translateY(-20px) translateX(15px) scale(1.05);
+  }
+}
+
+/* Efectos de luz */
+.light-effects {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.light-beam {
+  position: absolute;
+  background: linear-gradient(45deg, transparent, rgba(0, 212, 255, 0.1), transparent);
+  animation: sweep 15s infinite linear;
+}
+
+.light-beam-1 {
+  width: 2px;
+  height: 100%;
+  left: 20%;
+  animation-delay: 0s;
+}
+
+.light-beam-2 {
+  width: 1px;
+  height: 100%;
+  left: 60%;
+  animation-delay: 5s;
+  background: linear-gradient(45deg, transparent, rgba(139, 92, 246, 0.1), transparent);
+}
+
+.light-beam-3 {
+  width: 3px;
+  height: 100%;
+  left: 80%;
+  animation-delay: 10s;
+  background: linear-gradient(45deg, transparent, rgba(255, 0, 110, 0.08), transparent);
+}
+
+@keyframes sweep {
+  0% {
+    transform: translateX(-100px) rotateZ(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100vw) rotateZ(10deg);
+    opacity: 0;
+  }
+}
+
+/* Grid animado */
+.animated-grid {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.grid-line {
+  position: absolute;
+  background: rgba(0, 212, 255, 0.1);
+  animation: grid-pulse 8s var(--delay) infinite ease-in-out;
+}
+
+.grid-line.horizontal {
+  width: 100%;
+  height: 1px;
+}
+
+.grid-line.vertical {
+  width: 1px;
+  height: 100%;
+}
+
+.grid-line.horizontal:nth-child(1) {
+  top: 20%;
+}
+
+.grid-line.horizontal:nth-child(2) {
+  top: 50%;
+}
+
+.grid-line.horizontal:nth-child(3) {
+  top: 80%;
+}
+
+.grid-line.vertical:nth-child(4) {
+  left: 25%;
+}
+
+.grid-line.vertical:nth-child(5) {
+  left: 75%;
+}
+
+@keyframes grid-pulse {
+  0%, 100% {
+    opacity: 0.1;
+    transform: scaleX(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scaleX(1.02);
+  }
+}
+
+/* Efectos de resplandor para elementos que están encima */
+.content-glow {
+  position: relative;
+}
+
+.content-glow::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  background: linear-gradient(45deg, var(--ps-neon-blue), var(--ps-neon-purple), var(--ps-neon-pink));
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  filter: blur(15px);
+  transition: opacity 0.3s ease;
+}
+
+.content-glow:hover::before {
+  opacity: 0.7;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .circle {
+    display: none;
+  }
+  
+  .light-beam {
+    display: none;
+  }
+  
+  .particle {
+    --size: 1px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .particle,
+  .circle,
+  .light-beam,
+  .grid-line {
+    animation: none;
+  }
+}
