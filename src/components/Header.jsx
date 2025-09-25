@@ -1,11 +1,13 @@
-import { Search, Bell, Settings, User } from 'lucide-react';
-import { mockUser } from '../data/mockData';
+import { Search, Bell, Settings, User, LogOut } from 'lucide-react';
+import { useState } from 'react';
 
-const Header = ({ currentPage, unreadMessages, friendRequests }) => {
+const Header = ({ currentPage, unreadMessages, friendRequests, unreadNotifications, currentUser, onLogout, onNavigate }) => {
+  const [showUserMenu, setShowUserMenu] = useState(false);
+
   const getPageTitle = () => {
     switch (currentPage) {
       case 'dashboard':
-        return 'PlayStation Plus';
+        return 'LudereNet';
       case 'friends':
         return 'Amigos';
       case 'messages':
@@ -14,19 +16,23 @@ const Header = ({ currentPage, unreadMessages, friendRequests }) => {
         return 'Perfil';
       case 'catalog':
         return 'Catálogo de Juegos';
+      case 'notifications':
+        return 'Notificaciones';
+      case 'admin':
+        return 'Panel de Administración';
       default:
-        return 'PlayStation Plus';
+        return 'LudereNet';
     }
   };
 
-  const totalNotifications = unreadMessages + friendRequests;
+  const totalNotifications = unreadNotifications || 0;
 
   return (
     <header className="header">
       <div className="header-container">
         <div className="header-left">
           <div className="logo">
-            <span className="logo-text">PlayStation</span>
+            <span className="logo-text">LudereNet</span>
             <span className="logo-plus">Plus</span>
           </div>
           <h1 className="page-title">{getPageTitle()}</h1>
@@ -44,7 +50,11 @@ const Header = ({ currentPage, unreadMessages, friendRequests }) => {
         </div>
 
         <div className="header-right">
-          <button className="notification-btn">
+          <button 
+            className="notification-btn"
+            onClick={() => onNavigate('notifications')}
+            title="Ver notificaciones"
+          >
             <Bell size={20} />
             {totalNotifications > 0 && (
               <span className="notification-badge">{totalNotifications}</span>
@@ -55,19 +65,62 @@ const Header = ({ currentPage, unreadMessages, friendRequests }) => {
             <Settings size={20} />
           </button>
 
-          <div className="user-profile">
+          <div className="user-profile" onClick={() => setShowUserMenu(!showUserMenu)}>
             <img 
-              src={mockUser.avatar} 
-              alt={mockUser.username}
+              src={currentUser?.avatar} 
+              alt={currentUser?.displayName}
               className="user-avatar"
             />
             <div className="user-info">
-              <span className="username">{mockUser.username}</span>
-              <span className="user-level">Nivel {mockUser.level}</span>
+              <span className="username">{currentUser?.displayName}</span>
+              <span className="user-level">
+                Nivel {currentUser?.level} • {currentUser?.trophies} trofeos
+              </span>
             </div>
+
+            {showUserMenu && (
+              <div className="user-menu">
+                <div className="user-menu-header">
+                  <img src={currentUser?.avatar} alt={currentUser?.displayName} />
+                  <div>
+                    <div className="menu-username">{currentUser?.displayName}</div>
+                    <div className="menu-email">@{currentUser?.username}</div>
+                  </div>
+                </div>
+                
+                <div className="user-menu-actions">
+                  <button className="menu-action" onClick={() => setShowUserMenu(false)}>
+                    <User size={16} />
+                    Ver Perfil
+                  </button>
+                  
+                  <button className="menu-action" onClick={() => setShowUserMenu(false)}>
+                    <Settings size={16} />
+                    Configuración
+                  </button>
+                  
+                  <hr className="menu-divider" />
+                  
+                  <button className="menu-action" onClick={() => {
+                    setShowUserMenu(false);
+                    alert('Funcionalidad de cerrar sesión - En una app real aquí se haría logout');
+                  }}>
+                    <LogOut size={16} />
+                    Cerrar Sesión
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
+      
+      {showUserMenu && (
+        <div 
+          className="user-menu-overlay" 
+          onClick={() => setShowUserMenu(false)}
+        />
+      )}
     </header>
   );
 };

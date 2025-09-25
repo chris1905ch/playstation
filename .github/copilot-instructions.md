@@ -20,13 +20,13 @@
 ## Project Information
 - **Type**: Modern React Frontend Application
 - **Framework**: React with Vite
-- **Theme**: PlayStation Plus inspired design
+- **Theme**: LudereNet inspired design
 - **Features**: Friends system, messaging, friend requests
-- **UI**: Modern, responsive design with PlayStation branding
+- **UI**: Modern, responsive design with LudereNet branding
 
 ## Development Guidelines
 - Use modern React hooks and functional components
 - Implement responsive design for mobile and desktop
-- Follow PlayStation Plus color scheme and typography
+- Follow LudereNet color scheme and typography
 - Use modern CSS techniques (Grid, Flexbox, CSS Variables)
 - Implement mock data for friends and messaging system

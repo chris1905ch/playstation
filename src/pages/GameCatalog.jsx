@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Search, Filter, Star, Play, Heart, Share, ShoppingCart, Tag, Calendar, Users } from 'lucide-react';
+import { Search, Filter, Star, Play, Heart, Share, ShoppingCart, Tag, Calendar, Users, Check } from 'lucide-react';
 import { 
   mockGames, 
   gameCategories, 
@@ -9,6 +9,7 @@ import {
   getDiscountedGames,
   searchGames 
 } from '../data/gamesData';
+import useCart from '../hooks/useCart';
 
 const GameCatalog = () => {
   const [games, setGames] = useState(mockGames);
@@ -20,6 +21,8 @@ const GameCatalog = () => {
   const [priceRange, setPriceRange] = useState([0, 100]);
   const [selectedTags, setSelectedTags] = useState([]);
 
+  // Hook del carrito
+  const { addToCart, isInCart, getItemQuantity } = useCart();
   const allTags = [...new Set(mockGames.flatMap(game => game.tags))];
 
   useEffect(() => {
@@ -86,6 +89,19 @@ const GameCatalog = () => {
         ? prev.filter(t => t !== tag)
         : [...prev, tag]
     );
+  };
+
+  const handleAddToCart = (game, e) => {
+    e.stopPropagation(); // Prevenir que abra el modal del juego
+    addToCart({
+      id: game.id,
+      name: game.title,
+      price: `$${game.price.toFixed(2)}`,
+      image: game.image,
+      genre: game.category,
+      platform: 'PlayStation 5',
+      developer: game.developer
+    });
   };
 
   const formatPrice = (price, originalPrice, discount) => {
@@ -267,11 +283,25 @@ const GameCatalog = () => {
                 <div className="game-footer">
                   {formatPrice(game.price, game.originalPrice, game.discount)}
                   <div className="game-actions">
-                    <button className="btn btn-ghost btn-sm">
-                      <Heart size={16} />
+                    <button 
+                      className={`btn btn-sm ${isInCart(game.id) ? 'btn-success' : 'btn-primary'}`}
+                      onClick={(e) => handleAddToCart(game, e)}
+                      disabled={isInCart(game.id)}
+                    >
+                      {isInCart(game.id) ? (
+                        <>
+                          <Check size={16} />
+                          En Carrito ({getItemQuantity(game.id)})
+                        </>
+                      ) : (
+                        <>
+                          <ShoppingCart size={16} />
+                          Agregar
+                        </>
+                      )}
                     </button>
                     <button className="btn btn-ghost btn-sm">
-                      <Share size={16} />
+                      <Heart size={16} />
                     </button>
                   </div>
                 </div>
@@ -319,9 +349,22 @@ const GameCatalog = () => {
                   </div>
 
                   <div className="modal-actions">
-                    <button className="btn btn-primary">
-                      <ShoppingCart size={16} />
-                      Agregar al Carrito
+                    <button 
+                      className={`btn ${isInCart(selectedGame.id) ? 'btn-success' : 'btn-primary'}`}
+                      onClick={(e) => handleAddToCart(selectedGame, e)}
+                      disabled={isInCart(selectedGame.id)}
+                    >
+                      {isInCart(selectedGame.id) ? (
+                        <>
+                          <Check size={16} />
+                          En Carrito ({getItemQuantity(selectedGame.id)})
+                        </>
+                      ) : (
+                        <>
+                          <ShoppingCart size={16} />
+                          Agregar al Carrito
+                        </>
+                      )}
                     </button>
                     <button className="btn btn-secondary">
                       <Heart size={16} />
