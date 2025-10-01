@@ -7,21 +7,21 @@ const Dashboard = () => {
     {
       id: 1,
       name: "Spider-Man 2",
-      image: "https://via.placeholder.com/120x160/e60012/ffffff?text=SM2",
+      image: "https://i.redd.it/4ka376g7cl6b1.jpg",
       lastPlayed: "Hoy",
       progress: 78
     },
     {
       id: 2,
       name: "God of War Ragnarök",
-      image: "https://via.placeholder.com/120x160/00b4d8/ffffff?text=GOW",
+      image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2322010/capsule_616x353.jpg?t=1750909504",
       lastPlayed: "Ayer",
       progress: 92
     },
     {
       id: 3,
       name: "Horizon Forbidden West",
-      image: "https://via.placeholder.com/120x160/ff6b35/ffffff?text=HFW",
+      image: "https://cdn.cdkeys.com/496x700/media/catalog/product/n/e/new_project_-_2023-10-02t151943.412.jpg",
       lastPlayed: "Hace 3 días",
       progress: 65
     }

@@ -87,7 +87,7 @@ export const mockGames = [
     rating: 4.7,
     reviewCount: 18930,
     releaseDate: "2022-02-18",
-    image: "https://image.api.playstation.com/vulcan/ap/rnd/202107/3100/PvHyFH2fHmlBbAUtAhAGmTJG.png",
+    image: "https://cdn.cdkeys.com/496x700/media/catalog/product/n/e/new_project_-_2023-10-02t151943.412.jpg",
     screenshots: [
       "https://blog.playstation.com/tachyon/2021/07/f74c5fc1e2b2d75a8b4b9a6e8f7d0e3a.jpg",
       "https://images.pushsquare.com/screenshots/127924/large.jpg",
@@ -118,7 +118,7 @@ export const mockGames = [
     rating: 4.2,
     reviewCount: 32140,
     releaseDate: "2023-11-10",
-    image: "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2519060/header.jpg",
+    image: "https://static.wikia.nocookie.net/thelastofus/images/f/fe/Portada_Parte_I_limpia.jpeg/revision/latest?cb=20211209015400&path-prefix=es",
     screenshots: [
       "https://cdn.mos.cms.futurecdn.net/XWxGzTvLdMgJ8aK4VTcWY9.jpg",
       "https://images.pushsquare.com/screenshots/133598/large.jpg",
@@ -149,7 +149,7 @@ export const mockGames = [
     rating: 4.8,
     reviewCount: 28560,
     releaseDate: "2022-09-02",
-    image: "https://image.api.playstation.com/vulcan/ap/rnd/202206/0720/dR9VlqIFSYBExG1KOArLbUbW.png",
+    image: "https://upload.wikimedia.org/wikipedia/en/8/86/The_Last_of_Us_Part_I_cover.jpg",
     screenshots: [
       "https://blog.playstation.com/tachyon/2022/06/d2c0f0c8e3b7b4a5c1a2d3e4f5g6h7i8.jpg",
       "https://images.pushsquare.com/screenshots/130124/large.jpg",
@@ -242,7 +242,7 @@ export const mockGames = [
     rating: 4.6,
     reviewCount: 8920,
     releaseDate: "2024-04-26",
-    image: "https://image.api.playstation.com/vulcan/ap/rnd/202312/0117/bd13ec21a70e3b9f2dbc4eda01b58ba71a8b6bbb.png",
+    image: "https://i.ytimg.com/vi_webp/V6XYHiBxkvk/maxresdefault.webp",
     screenshots: [
       "https://blog.playstation.com/tachyon/2023/12/e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8.jpg",
       "https://images.pushsquare.com/screenshots/134256/large.jpg",

@@ -9,7 +9,6 @@ import {
   ShoppingBag, 
   Shield,
   Bell,
-  Globe,
   Library,
   Store,
   ChevronLeft,
@@ -76,14 +75,7 @@ const Sidebar = ({ currentPage, setCurrentPage, unreadMessages, friendRequests, 
         category: 'social',
         description: 'Chat y comunicación'
       },
-      {
-        id: 'community',
-        label: 'Comunidad',
-        icon: Globe,
-        badge: null,
-        category: 'social',
-        description: 'Comunidad y eventos LudereNet'
-      },
+
       {
         id: 'games',
         label: 'Mis Juegos',
@@ -137,7 +129,7 @@ const Sidebar = ({ currentPage, setCurrentPage, unreadMessages, friendRequests, 
 
   // Handle item click
   const handleItemClick = (itemId) => {
-    if (['dashboard', 'catalog', 'store', 'cart', 'friends', 'messages', 'community', 'games', 'trophies', 'notifications', 'profile', 'admin'].includes(itemId)) {
+    if (['dashboard', 'catalog', 'store', 'cart', 'friends', 'messages', 'games', 'trophies', 'notifications', 'profile', 'admin'].includes(itemId)) {
       setCurrentPage(itemId);
     }
   };

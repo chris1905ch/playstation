@@ -337,7 +337,8 @@
 }
 
 .notification-btn,
-.settings-btn {
+.settings-btn,
+.cart-btn {
   position: relative;
   padding: var(--spacing-sm);
   background: transparent;
@@ -349,7 +350,8 @@
 }
 
 .notification-btn:hover,
-.settings-btn:hover {
+.settings-btn:hover,
+.cart-btn:hover {
   background: var(--ps-gray);
 }
 

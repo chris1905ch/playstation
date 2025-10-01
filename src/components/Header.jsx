@@ -1,4 +1,4 @@
-import { Search, Bell, Settings, User, LogOut } from 'lucide-react';
+import { Search, Bell, Settings, User, LogOut, ShoppingCart } from 'lucide-react';
 import { useState } from 'react';
 
 const Header = ({ currentPage, unreadMessages, friendRequests, unreadNotifications, currentUser, onLogout, onNavigate }) => {
@@ -61,6 +61,14 @@ const Header = ({ currentPage, unreadMessages, friendRequests, unreadNotificatio
             )}
           </button>
           
+          <button 
+            className="cart-btn"
+            onClick={() => onNavigate('cart')}
+            title="Ver carrito"
+          >
+            <ShoppingCart size={20} />
+          </button>
+
           <button className="settings-btn">
             <Settings size={20} />
           </button>
